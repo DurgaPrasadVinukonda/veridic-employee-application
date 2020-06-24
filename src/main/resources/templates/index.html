@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Veridic Employee Information</title>
+</head>
+<body>
+	<div align="center">
+		<h1>Employee List</h1>
+		<a href="/new">Create New Employee</a> <br></br>
+		<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>Employee Id</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+					<th>Email</th>
+					<th>Phone Number</th>
+					<th>Technology</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+					<th>Vendor Company</th>
+					<th>Vendor Name</th>
+					<th>Vendor Phone</th>
+					<th>Vendor Email</th>
+					<th>Vendor Location</th>
+					<th>Client Name</th>
+					<th>Client Address</th>
+					<th>Rate</th>
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${listemployees}">
+					<td th:text="${employee.eid}">Employee EID</td>
+					<td th:text="${employee.firstname}">First Name</td>
+					<td th:text="${employee.lastname}">Last Name</td>
+					<td th:text="${employee.email}">Email</td>
+					<td th:text="${employee.phonenumber}">Emp Phone Number</td>
+					<td th:text="${employee.technology}">Technology</td>
+					<td th:text="${#dates.format(employee.startdate, 'dd-MM-yyyy')}"></td>
+					<td th:text="${#dates.format(employee.enddate, 'dd-MM-yyyy')}"></td>
+					<td th:text="${employee.vendorcompany}">Vendor Company</td>
+					<td th:text="${employee.vendorname}">Vendor Name</td>
+					<td th:text="${employee.vendorphone}">Vendor Phone</td>
+					<td th:text="${employee.vendoremail}">Vendor Email</td>
+					<td th:text="${employee.vendorlocation}">Vendor Location</td>
+					<td th:text="${employee.clientname}">Client Name</td>
+					<td th:text="${employee.clientaddress}">Client  Address</td>
+					<td th:text="${employee.rate}">Rate</td>
+					
+					<td>
+                    <a th:href="@{'/edit/' + ${employee.eid}}">Edit</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{'/delete/' +${employee.eid}}">Delete</a>
+                </td>
+                
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
